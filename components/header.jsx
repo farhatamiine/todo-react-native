@@ -36,8 +36,9 @@ export default function Header() {
 const styles = StyleSheet.create({
   header: {
     height: 200,
-    marginBottom: 25,
+    marginBottom: 10,
     padding: 25,
+    paddingTop:30,
     shadowColor: "#CFD8DC",
     shadowOffset: {
       width: 0,
