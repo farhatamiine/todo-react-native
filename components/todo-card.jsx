@@ -1,32 +1,19 @@
-import React, { Component, useState } from "react";
-import { StyleSheet, Switch, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 
-export default function TodoCard({ text, icon, secondText }) {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
+export default function TodoCard({ id,text, icon, secondText,handleDelete}) {
+ 
   return (
-    <View style={styles.card}>
+    <TouchableOpacity onPress={() => handleDelete(id)} style={styles.card}>
       <View style={styles.iconContainer}>
         <Entypo name={icon} size={32} color="#ffff" />
       </View>
-      <View style={styles.infoContainer}>
-        <View  style={styles.textContainer}>
+      <View style={styles.infoContainer}>       
           <Text style={styles.cardText}>{text}</Text>
           <Text style={styles.cardSecondText}>{secondText}</Text>
-        </View>
-        <View style={styles.switchContainer}>
-          <Switch
-            trackColor={{ false: "#ECEFF1", true: "#7289DA" }}
-            thumbColor="#7289DA"
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-          />
-        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -52,7 +39,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     margin: 10,
-    flex:2,
     backgroundColor: "#7289DA",
     width: 50,
     alignItems: "center",
@@ -63,14 +49,12 @@ const styles = StyleSheet.create({
   },
   infoContainer:{
     flex:8,
-    justifyContent:'space-around',
-    alignItems:'center',
-    flexDirection:'row',
+    marginLeft:5,
+    justifyContent:'center',
+    alignItems:'flex-start',
     alignSelf:"stretch"
   },
-  switchContainer: {
-   alignItems:'center',
-  },
+ 
   cardText: {
     color: "black",
     fontSize: 20,
