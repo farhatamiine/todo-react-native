@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo,Foundation } from "@expo/vector-icons";
 
-export default function Header() {
+export default function Header({todoNumber}) {
   const [isDarkMode,setIsDarkMode] = useState(false);
   const toggleSwitch = () => setIsDarkMode((previousState) => !previousState);
   return (
@@ -11,10 +11,10 @@ export default function Header() {
       <View style={styles.infoContainer}>
         <View style={styles.iconContainer}>
           <View style={styles.icon}>
-            <Entypo name="check" size={32} color="#ffff" />
+            <Foundation name="clipboard-notes" size={42} color="#ffff" />
           </View>
           <View style={styles.infoTodo}>
-            <Text style={styles.iconText}>5</Text>
+            <Text style={styles.iconText}>{todoNumber}</Text>
             <Text style={styles.iconText}>Done</Text>
           </View>
         </View>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     margin: 10,
-    backgroundColor: "#CFD7F2",
+    backgroundColor: "#000",
     width: 60,
     alignItems: "center",
     justifyContent: "center",
